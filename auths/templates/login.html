@@ -1,0 +1,39 @@
+{% extends 'amu3ze/index.html' %}
+{% block content %}
+<section class="p-4">
+    <container class="row">
+        <div class="col-xl-4 col-lg-6 col-md-8 col-10">
+        <form method="POST" class="row g-3 p-3">
+            <legend class="border-bottom mb-2">Login</legend>
+    
+            <div class="form-group">
+                <div class="col-12 mb-1">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" required>
+                    <div class="invalid-feedback">please enter a valid email</div>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" required>
+                    <div class="invalid-feedback">please enter a valid password</div>
+                </div>
+            </div>
+    
+            <div class="col-12 mb-1">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="rememberMe" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember Me</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" value="Login" class="btn btn-outline-primary">Login</button>
+                <a href={{url_for("auth_view.sign_up")}} class=" m-2 pt-1 text-muted" style="display:inline-block;">forgot password?</a>
+            </div>
+        
+            
+        </form>    
+        </div>
+    </container>
+    
+    </section>
+{% endblock %}

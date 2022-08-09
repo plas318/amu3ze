@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Open Sans");
+
+#sec2{
+    background-color: #cdd9c2;;
+}
+
+
+.txt-1{
+    width: 100%;
+    text-align: center;
+    font-size: 2.1rem;
+    
+}
+.txt-2{
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.9rem;
+    
+    
+    margin-top: .2rem;
+
+    color:#849790
+}
+
+.txt-3{
+    font-family: "Open Sans", sans-serif;
+    margin-top: 2.3rem;
+    font-size: 2.3rem;
+    margin-left: 7rem;
+
+}
+
+#my-playlist{
+    width: 462.92px; height: 500px;
+    background-color: #131313;
+    opacity: 50;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+
+}
+
+
+.my-playlist-main{
+    background-color: #292727;
+    overflow: hidden;
+}
+
+.list-group-item.activated{
+    background-color: #ed4f46;
+    color:lightsteelblue;
+}
+
+.list-group-item{
+    background-color: #666666;
+    
+}
+
+.plist-menu{
+    position: absolute;
+    background-color: #1d1d1d;
+    bottom: 5px;
+    min-width: 100%;
+}
+.plist-menu:hover{
+    background-color: #353535;
+}
+
+.plist-menu .addPlbtn{
+    color: #ed4f46;
+    font-weight:bold;
+}
+
+.plist-menu .addPlbtn:hover{
+    color:#ff8882
+}
+
+.m-nav-item{
+    
+    list-style: none;
+    display: inline-block;
+    margin: .5rem;
+    /* border-right: 1px solid #cdd9c2 ; */
+    padding: .2rem;
+}
+.m-nav-item a{
+    text-decoration: none;
+    color:#ed4f46;
+}
+
+
+span > li{
+    list-style: none;
+    display: none;
+
+    
+}
+
+@keyframes slideFromUpper {
+    0%{transform: translateX(100%);}
+    80%{transform: translateX(-20%)}
+    100%{transform: translateX(0%);}
+}
+
+.list-group-item-playlist.activated+span > li{
+    list-style: none;
+    display: inline-block;
+    font-size: 0.9rem;
+    animation: 1s ease-in 0s 1 slideFromUpper;    
+}
+
+
+span > li > a{
+    all:unset;
+    color:#ed4f46;
+    
+}
+span > li > a:hover{
+    color: #faaeaa;
+    cursor: pointer;
+}
+.my-closer:after{
+    font-size: 1.2rem;
+    color:white;
+    display: inline-block;
+    content: "\00d7"; /* This will render the 'X' */
+  }
+
+
+  .shuffle-label{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color:#ed4f46;
+    font-weight: bold;
+  }
+
+  #pl-l-group{
+      scroll-behavior: smooth;
+      max-height: 340px;
+      overflow-y: auto;
+      overflow-x: hidden;
+  }
