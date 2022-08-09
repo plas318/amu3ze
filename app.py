@@ -14,6 +14,16 @@ login_manager = LoginManager(app)
 
 
 
+from views import views
+from auths.auth import auth_view
+
+app.register_blueprint(views, url_prefix='/amu3ze/')
+app.register_blueprint(auth_view, url_prefix='/auth/')
+
+from models import User
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 @app.route('/')
@@ -23,15 +33,6 @@ def index():
 
 
 if __name__ == "__main__":
-    from views import views
-    from auths.auth import auth_view
-    
-    app.register_blueprint(views, url_prefix='/amu3ze/')
-    app.register_blueprint(auth_view, url_prefix='/auth/')
-    
-    from models import User
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
+
     
     app.run()
