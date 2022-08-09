@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app
+web: gunicorn ..venv.lib.python3.9.site-packages.gunicorn.http.wsgi:app
