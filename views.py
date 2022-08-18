@@ -16,7 +16,7 @@ def index():
         s = parse_audio('Recommend')        
     
     
-    playlists = Playlist.query.all()
+    playlists = Playlist.query.order_by(Playlist.name.asc())
     
         
     if playlists:
