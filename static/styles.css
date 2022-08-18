@@ -31,12 +31,9 @@
 }
 
 #my-playlist{
-    width: 462.92px; height: 500px;
     background-color: #131313;
     opacity: 50;
     font-family: 'Roboto', sans-serif;
-    position: relative;
-
 }
 
 
@@ -55,11 +52,8 @@
     
 }
 
-.plist-menu{
-    position: absolute;
+.plist-menu{ 
     background-color: #1d1d1d;
-    bottom: 5px;
-    min-width: 100%;
 }
 .plist-menu:hover{
     background-color: #353535;
@@ -105,7 +99,7 @@ span > li{
     list-style: none;
     display: inline-block;
     font-size: 0.9rem;
-    animation: 1s ease-in 0s 1 slideFromUpper;    
+    animation: 1s ease-in 0s 1 slideFromUpper;   
 }
 
 
@@ -135,7 +129,48 @@ span > li > a:hover{
 
   #pl-l-group{
       scroll-behavior: smooth;
-      max-height: 340px;
+      max-height: 40vh;
       overflow-y: auto;
       overflow-x: hidden;
+      overscroll-behavior-y: contain;
+  }
+
+.player-option{
+    display:inline-block;
+}
+  ul.player-option > li{
+      display: inline-block;
+      list-style: none;
+    
+  }
+  ul.player-option > li > a {
+      font-size: 2rem;
+      text-decoration: none;
+      cursor: pointer;
+      color:#ed4f46;
+  }
+
+
+  #c-p{
+    text-decoration: none;
+    color:white;
+  }
+  #c-p:hover{
+    transition-duration:600ms;
+    color:#849790;
+  }
+  .c-player{
+    display:none;
+  }
+  .c-player.active{
+      display:block;
+      transition-duration: 500ms;
+  }
+
+  .c-text{
+    display:none;  
+  }
+  .c-text.active{
+    display:flex;
+    transition-duration: 500ms;
   }
