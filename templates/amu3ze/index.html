@@ -26,134 +26,154 @@
 
 
 
+
+
+
 <body>
-    <div class="col-md-9 mx-sm-auto py-md-5 bg-white" style=" max-width:1057.500px;">
-        <header class="d-flex text-center align-items-center pb-3 mb-md-5 mb-sm-3 border-bottom">
-            <h3 class="mt-sm-4 ms-sm-3">
-                Amu3ze
-            </h3>
-            <ul class="ms-auto">
-                <div class="mt-auto d-flex align-items-end" >
-                    {% if current_user.is_authenticated %}
-                    <li class="m-nav-item"><span>Currently signed in as {{current_user.email}}</span></li>
-                    <li class="m-nav-item"><a href={{url_for('auth_view.logout')}} class="">Logout</a></li>
-                    {% else %}
-                    <li class="m-nav-item"><a href={{url_for('auth_view.login')}} class="">Login</a></li>
-                    <li class="m-nav-item"><a href={{url_for('auth_view.sign_up')}} class="">Sign Up</a></li>
-                    {% endif %}
-                </div>
-            </ul>
-        </header>
+    <header class="d-flex mb-lg-5 mb-3 mt-1 align-items-center border-bottom">
+        <h3 class="ms-3">
+            Amu3ze
+        </h3>
+        <ul class="ms-auto">
+            <div class="d-flex align-items-end" >
+                {% if current_user.is_authenticated %}
+                <li class="m-nav-item"><span>Currently signed in as {{current_user.email}}</span></li>
+                <li class="m-nav-item"><a href={{url_for('auth_view.logout')}} class="">Logout</a></li>
+                {% else %}
+                <li class="m-nav-item"><a href={{url_for('auth_view.login')}} class="">Login</a></li>
+                <li class="m-nav-item"><a href={{url_for('auth_view.sign_up')}} class="">Sign Up</a></li>
+                {% endif %}
+            </div>
+        </ul>
+    </header>
+
+
+
+    <div class="col-lg-10 mx-auto py-lg-5 bg-white" style=" max-width: 1024px">
         {% block content %}
-        <div class="section p-4 ">
+        <div class="section p-4">
             <div class="container-fluid">
                  <h2 class="fw-bold mb-3" style="color:tomato">
                     amu3ze
                 </h2>
-                <p class="lead col-md-8">
-                    Quickly and Easily get started with amu3ze. Listen to your favourite playlist and share it among your friends!
+                <p class="lead col-lg-8">
+                    Listen to your favourite playlist and share it among your friends!
                 </p>
 
-                <hr class="col-3 col-md-2 mb-5">
+                <hr class="col-3 col-lg-2 mb-5">
 
 
             </div>
         </div>
     
-        <div class="section p-sm-4 p-1 mb-3 text-light" id="sec2">
-            <div class="container-fluid row px-0">
-                <div class="col-md-5  mx-md-0 mx-auto ms-1 me-md-5 mb-4">
-                    <div style="width: 462.92px; height: 500px;">
-                        <div id="calamansi-player-1" class="">
-                            Loading player...
+        <div class="section p-lg-4 p-1 mb-3 text-light" id="sec2">
+            <div class="container-fluid row px-0 mx-0">
+                <div class="d-flex mb-3 justify-content-center align-item-center h-100 w-100">
+                    <a type="button" class="fs-1" id="c-p">Calamansi Player</a>
+                </div>
+                    <div class="col-lg-5 d-lg-block d-flex justify-content-center mb-4 ">
+                        <div class="c-player" style="max-width: 26rem; max-height: 30rem; width: 90vw; height: 60vh;">
+                            <div id="calamansi-player-1" class="">
+                                Loading player...
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mt-xs-5 mt-md-0 col-md-6 d-lg-flex d-none flex-column  justify-content-center align-items-center">
-                    
-                    <h4 class="txt-1" ><span class="fs-1">L</span>isten with<span class="txt-2 ms-md-3  text-muted fw-bold " >Classic </span></h4>
-                    
-                    <h3 class="txt-3 ">Calamansi Player</h3>
-                </div>
+                    <div class="c-text flex-column col-lg-5 justify-content-center align-items-center">
+                        
+                        <h4 class="txt-1" ><span class="fs-1">L</span>isten with<span class="txt-2 ms-lg-3  text-muted fw-bold " >Classic </span></h4>
+                        
+                        <h3 class="txt-3 ">Calamansi Player</h3>
+                    </div>
                 
                 
             </div>
         </div>
 
 
-        <div class="section p-sm-4 p-1 bg-dark text-light">
-            <div class="container-fluid row px-0">
-                
-                             
-                
-                <div class="col-5 mx-md-0 mx-auto mb-3" style="width: 462.92px; height: 500px;">
-                    <div style="width: 462.92px; height: 500px;">
-                        <div id="iframe_p"></div>
+        <div class="section p-lg-4 p-1 mb-3 bg-dark text-light">
+            <div class="container-fluid row px-0 mx-0">
+                    
+                <div class="col-lg-5 mb-4 me-lg-5">
+                    <div class="d-lg-block d-flex justify-content-center">
+                        <div style="max-width: 26rem; max-height: 30rem; width: 90vw; height: 60vh;">
+                            <div id="iframe_p" style="width:100%; height:100%;"></div>
+
+
+                            <div class="d-flex mb-2 option-shuffle" style="max-width: 26rem; width: 100%;"> 
+                                <ul class="player-option d-flex mx-5  mb-1" style="justify-content: space-between; height:100%; width:90%;">
+                                    <li ><a class="prev-btn" id="prev-btn"><i class="bi bi-arrow-left"></i></a></li>
+                                    <li ><a class="play-btn" id="play-btn"><i class="bi bi-play"></i></a></li>
+                                    <li ><a class="next-btn" id="next-btn"><i class="bi bi-arrow-right"></i></a></li>
+                                </ul>
+
+                                <label class="ms-auto mx-2  align-self-center shuffle-label"for="Shuffle">Shuffle</label>                       
+                                <label class="switch me-1 align-self-center " data-bs-toggle="tooltip" data-bs-placement="left" title="Enables Shuffle *Applies from next video">
+                                    <input class="shuffle" name="shuffle" id="shuffle" type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
                     
-                    <div class="d-flex justify-content-end mt-2 mb-1option-shuffle" style="width: 462.92px;"> 
-                        <label class="mx-2 align-self-center shuffle-label"for="Shuffle">Shuffle</label>                       
-                        <label class="switch me-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Enables Shuffle *Applies from next video">
-                            <input class="shuffle" name="shuffle" id="shuffle" type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
+                    
                 </div>
-                <div class="mt-md-0 mt-5 ms-lg-4 ms-1 col-5 d-flex flex-column  text-light justify-content-center ">
-                    <div class="d-block" class="my-playlist border-pill" id="my-playlist" stlye="">
-                        <div class="list-title m-2 border-bottom py-2 ">Playlists</div>
-                        <div class="my-playlist-main mt-2">
-                            <ul class="list-group" id="pl-l-group">
-                                {% if playlists %}
-                                {% for pl in playlists %}
-                                
-                                <button type="button" data-url = "{{pl.url}}" class="list-group-item list-group-item-action list-group-item-playlist mb-1">{{pl.name}}</button>
-                                <span class=" d-flex justify-content-end ms-1"><li class="me-auto">Created by: {{pl.creator.email}}</li>
-                                    <li><a class="mx-2" href={{url_for('views.like_playlist', pid = pl.id)}}>Like: </a> {{likes[pl.id]}}</li>
-                                    <li><a class="mx-2" type="button" data-bs-toggle="modal" data-bs-target="#plRmModal{{pl.id}}" >Delete</a></li></span>
-                                
-                                    <div class="modal fade text-dark" id="plRmModal{{pl.id}}" tabindex="-1">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">
-                                                       Alert
-                                                    </h5>
-                                                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="lead">
-                                                        Are you sure you want to <span style="color:red;">Remove</span> this playlist?
-                                                    </div>
-                                                    <div class="d-flex p-1 m-2 border-top justify-content-end">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <a href={{url_for('views.remove_playlist', pid=pl.id)}} type="submit" id="plRmBtn" class="btn btn-primary ms-2" id="">Remove playlist</a>
+
+                <div class="col-lg-5 mb-4 ms-lg-5 mt-5 mt-lg-0" >
+            
+                    <div class = "d-lg-block d-flex text-light flex-column mx-auto" style="max-width: 26rem; max-height: 30rem; width: 100%; height: 60vh;">
+                            <div class="d-block" class="my-playlist border-pill " id="my-playlist" style="">
+                                <div class="list-title m-2 border-bottom py-2 ">Playlists</div>
+                                <div class="my-playlist-main mt-2">
+                                    <ul class="list-group" id="pl-l-group">
+                                        {% if playlists %}
+                                        {% for pl in playlists %}
+                                        
+                                        <button type="button" data-url = "{{pl.url}}" class="list-group-item list-group-item-action list-group-item-playlist mb-1">{{pl.name}}</button>
+                                        <span class=" d-flex justify-content-end ms-1"><li class="me-auto">Created by: {{pl.creator.email}}</li>
+                                            <li><a class="mx-2" href={{url_for('views.like_playlist', pid = pl.id)}}>Like: </a> {{likes[pl.id]}}</li>
+                                            <li><a class="mx-2" type="button" data-bs-toggle="modal" data-bs-target="#plRmModal{{pl.id}}" >Delete</a></li></span>
+                                        
+                                            <div class="modal fade text-dark" id="plRmModal{{pl.id}}" tabindex="-1">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">
+                                                               Alert
+                                                            </h5>
+                                                            <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="lead">
+                                                                Are you sure you want to <span style="color:red;">Remove</span> this playlist?
+                                                            </div>
+                                                            <div class="d-flex p-1 m-2 border-top justify-content-end">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <a href={{url_for('views.remove_playlist', pid=pl.id)}} type="submit" id="plRmBtn" class="btn btn-primary ms-2" id="">Remove playlist</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                
-                                {% endfor %}
+                                        
+                                        {% endfor %}
+                                        {% endif %}
+                                        
+        
+            
+                                    </ul>     
+                                </div>                   
+                            </div>
+                            <div class="plist-menu d-flex w-100">
+                                {% if current_user.is_authenticated %}
+                                <div class="btn btn-primary-sm ms-auto addPlbtn" id="addPlbtn" type="button" data-bs-toggle="modal" data-bs-target="#plModal">Add playlist</div>
+                                {% else %}
+                                <div class="btn btn-primary-sm ms-auto disabled addPlbtn" id="addPlbtn" type="button" data-bs-toggle="" data-bs-target="">Add playlist</div>
                                 {% endif %}
                                 
-
-    
-                                </ul>   
-                            
-                        </div>
-                        <div class="plist-menu mt-auto d-flex">
-                            {% if current_user.is_authenticated %}
-                            <div class="btn btn-primary-sm ms-auto addPlbtn" id="addPlbtn" type="button" data-bs-toggle="modal" data-bs-target="#plModal">Add playlist</div>
-                            {% else %}
-                            <div class="btn btn-primary-sm ms-auto disabled addPlbtn" id="addPlbtn" type="button" data-bs-toggle="" data-bs-target="">Add playlist</div>
-                            {% endif %}
-                            
-                        </div>
-                                               
+                            </div>        
                     </div>
-                    
+
                 
                 </div>
                 <div class="modal fade text-dark" id="plModal" tabindex="-1">
@@ -215,8 +235,6 @@
     function onYouTubeIframeAPIReady() {
     
     player = new YT.Player('iframe_p', {
-    height: '500',
-    width: '500',
     videoId: "PL-33V9p_BGEtrJeK3KsmE8TqLJGlsr2is",
     playerVars: 
           {
@@ -225,7 +243,8 @@
           },
     events: {
         'onReady': onPlayerReady,
-        'onError': onPlayerError
+        'onError': onPlayerError,
+        'onStateChange': onStateChange
     }
     });
     }
@@ -236,6 +255,7 @@
         if (e.target.checked){
             current_player.setShuffle(1)
             console.log('Shuffle option set: on')
+            player.playVideoAt(0)
         }
         else {
             current_player.setShuffle(0)
@@ -246,10 +266,23 @@
 
     // 4. The API will call this function when the video player is ready.
     function onPlayerReady(event) {
-    event.target.setSize(462.92, 500);
+    
     
     } 
 
+    function onStateChange(event){
+        if (event.data===5){
+            let shuffleSwitch = document.querySelector('#shuffle')
+            if (shuffleSwitch.checked){
+                event.target.setShuffle(1);
+                event.target.playVideoAt(0);               
+            }
+            else{
+                event.target.playVideoAt(0);
+            }
+
+        }
+    }
     
 
     function stopVideo() {
@@ -264,22 +297,24 @@
     btns.forEach( btn => {
         btn.addEventListener('click', e=> {
             //Toggle Selected lists
+            
+            //Change youtube playlist event
+            let pl = YT.get('iframe_p');
+            let url = e.target.dataset['url'];
+            console.log(url)
+
+            pl.cuePlaylist({list: url, listType:'playlist'});
+            
+            setTimeout( function(){
+                pl.cuePlaylist({list: url, listType:'playlist'})
+            },500)
+
+
             activelist = document.querySelector('.list-group-item.activated');
             if (activelist){
                 activelist.classList.toggle('activated');
             }
             e.target.classList.toggle('activated');
-            //Change youtube playlist event
-            let pl = YT.get('iframe_p');
-            let url = e.target.dataset['url'];
-            console.log(url)
-            let shuffleSwitch = document.querySelector('#shuffle')
-            if (shuffleSwitch.checked){
-                shuffleSwitch.removeAttribute('checked')
-            }
-            
-            pl.loadPlaylist({list: url, listType:'playlist'});
-            pl.playVideo();
 
         });
     });
@@ -294,9 +329,51 @@
     }
 
 
-
+    function shuffle(){
+        let current_player = YT.get('iframe_p');
+            if (e.target.checked){
+                current_player.setShuffle(1)
+                console.log('Shuffle option set: on')
+                player.playVideoAt(0)
+            }
+            else {
+                current_player.setShuffle(0)
+                console.log('Shuffle option set: off')
+            }
+    }
     
   
+    const prev = document.querySelector('#prev-btn');
+    const play = document.querySelector('#play-btn');
+    const next = document.querySelector('#next-btn');
+
+    prev.addEventListener('click', e=>{
+        let current_player = YT.get('iframe_p');
+        current_player.previousVideo()
+    });
+    next.addEventListener('click', e=>{
+        let current_player = YT.get('iframe_p');
+        current_player.nextVideo()
+    });
+    play.addEventListener('click', e=>{
+        let current_player = YT.get('iframe_p');
+        const state = player.getPlayerState()
+        if (state===1){
+            current_player.pauseVideo()
+        }
+        else {
+            current_player.playVideo()
+        }
+    });
+    
+    const cp = document.querySelector('#c-p');
+    cp.addEventListener('click', e=>{
+        const cPlayer = document.querySelector('.c-player')
+        const cText = document.querySelector('.c-text')
+        cPlayer.classList.toggle('active');
+        cText.classList.toggle('active');
+
+    });
 
 
     </script>
