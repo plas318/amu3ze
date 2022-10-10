@@ -290,7 +290,8 @@
     }
 
     function onPlayerError(error){
-        console.log(error)
+        console.log(error);
+        player.nextVideo()
     }
 
     let btns = document.querySelectorAll('.list-group-item-playlist');
@@ -349,6 +350,7 @@
 
     prev.addEventListener('click', e=>{
         let current_player = YT.get('iframe_p');
+        current_player.previousVideo()
         current_player.previousVideo()
     });
     next.addEventListener('click', e=>{
