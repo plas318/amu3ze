@@ -5,67 +5,56 @@ from flask_login import current_user, login_required
 from models import User, Playlist, LikesTable
 from app import db
 
+# Flask uses Blueprints to define different directories
 views = Blueprint('views', __name__)
 
+# Route: Default View  (index)
 @views.route('/')
 def index():
+    # Using session(cookie) to get local (static audio files) for calamansi player
+    # Session was used because this is not a spa, or doesn't have the axios, or ajax 
     s= session.get('source')
-    
-    print(f'request get s: {s}')
+    # If no folder is provided, defaults to Recommend folder
     if not s:
         s = parse_audio('Recommend')        
-    
-    
+        
     playlists = Playlist.query.order_by(Playlist.name.asc())
-    
 
     if playlists:
         likes = {}
         for p in playlists:
             likes[p.id] = get_likes(p.id)
-        
-        
         return render_template('amu3ze/index.html', source=s, playlists=playlists, likes=likes)
+    
     return render_template('amu3ze/index.html', source=s)    
     
 
-# Calamansi player function if you give path /hidden you might get interesting results.!
-
-@views.route('<string:folder_name>', methods=['GET', 'POST'])
+# Route: Provide Folder for Calamansi player 
+@views.route('<string:folder_name>', methods=['GET'])
 def generate_list(folder_name):
-    # folder_name = request.form.get('folder-name')
-    #print(folder_name)
     source = parse_audio(folder_name)
-    
-    #print(f'before session: {source}')
     session['source'] = source
-    
     return redirect(url_for('views.index'))
    
 
-
+# Route: Create a new playlist using youtube playlist url
 @views.route('/create-playlist', methods=['POST'])
 @login_required
 def create_playlist():
     if request.method=="POST":
         url = request.form.get('playlist-id')
         name = request.form.get('playlist-name')
-        
-        
         exist_playlist = Playlist.query.filter_by(url=url).first()
-        print(url, name)
         if exist_playlist:
             print('Playlist already exists!')
         else:    
             new_playlist = Playlist(url=url, name=name, user=current_user.id)
             db.session.add(new_playlist)
             db.session.commit()
-            
-                
         return redirect(url_for('views.index'))
 
 
-
+# Route: Remove the selected playlist if user is creator
 @views.route('/remove-playlist/<int:pid>', methods=['GET', 'POST'])
 @login_required
 def remove_playlist(pid):
@@ -77,6 +66,8 @@ def remove_playlist(pid):
                 
     return redirect(url_for('views.index'))
 
+
+# Route: Likes the selected playlist if not liked, or remove like
 @views.route('/like-playlist/<int:pid>', methods=['GET', 'POST'])
 @login_required
 def like_playlist(pid):

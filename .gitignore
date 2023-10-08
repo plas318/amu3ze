@@ -4,9 +4,9 @@
 /static/audio/songs/hidden2
 /static/audio/songs/yas
 
-#python venv
+#python .env venv
 .venv/
-
+.env
 # pycache
 __pycache__
 

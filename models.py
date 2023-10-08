@@ -36,16 +36,6 @@ class Playlist(db.Model):
     
 
 
-# class Likes(db.Model):
-#     __tablename__ = "likes"    
-#     id = db.Column(db.Integer, primary_key=True)
-#     count = db.Column(db.Integer, nullable=False, default=0)
-#     like_table = db.relationship('LikesTable', back_populates="likes")
-#     def __repr__(self) -> str:
-#         return f'Likes: {self.count}'
-    
-
-  
 class LikesTable(db.Model):
     __tablename__= "like_table"
     id = db.Column(db.Integer, primary_key=True)
