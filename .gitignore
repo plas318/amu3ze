@@ -8,7 +8,7 @@
 .venv/
 
 # pycache
-/__pycache__
+__pycache__
 
 # === Compiled Source ===
 *.com
@@ -33,6 +33,7 @@
 *.log
 *.sql
 *.sqlite
+*.db
 
 # === OS Generated Files ===
 .DS_Store
