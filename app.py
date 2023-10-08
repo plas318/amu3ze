@@ -14,25 +14,26 @@ login_manager = LoginManager(app)
 
 
 
-from views import views
-from auths.auth import auth_view
-
-app.register_blueprint(views, url_prefix='/amu3ze/')
-app.register_blueprint(auth_view, url_prefix='/auth/')
-
-from models import User
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
-@app.route('/')
-def index():
-    return redirect(url_for("views.index"))
 
 
 
 if __name__ == "__main__":
+    from views import views
+    from auths.auth import auth_view
+    from test.test import tests
+    app.register_blueprint(views, url_prefix='/amu3ze/')
+    app.register_blueprint(auth_view, url_prefix='/auth/')
+    app.register_blueprint(tests, url_prefix='/test/')
+
+    from models import User
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
+
+
+    @app.route('/')
+    def index():
+        return redirect(url_for("views.index"))
 
     
-    app.run()
+    app.run(debug=True)

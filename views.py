@@ -18,7 +18,7 @@ def index():
     
     playlists = Playlist.query.order_by(Playlist.name.asc())
     
-        
+
     if playlists:
         likes = {}
         for p in playlists:
