@@ -10,7 +10,8 @@ Simple responsive ui with 2 Players
 
 ## Youtube Player API:
 
-![image](https://github.com/plas318/Flask-amu3ze/assets/64758800/3d1a54f3-c693-4fb4-ba0d-6157cbf9bf06)
+![image](https://github.com/plas318/amu3ze/assets/64758800/aad1d480-eb74-4455-9ce0-ac60e3d1713e)
+
 
 
 ### Run Local Server
